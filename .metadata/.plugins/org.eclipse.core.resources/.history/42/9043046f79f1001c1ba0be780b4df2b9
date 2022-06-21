@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>會員註冊作業</title>
+</head>
+<body>
+	<!-- 規劃註冊頁面 同樣都在網站根目錄下 直接指定端點名稱-->
+	<form method="post" action="RegisterSave">
+		<div>使用者名稱</div>
+		<input type="text" name="username"/>
+		<div>使用者密碼</div>
+		<input type="password" name="pwd"/>
+		<div>真實姓名</div>
+		<input type="text" name="realname"/>
+		<div>E-MAIL</div>
+		<input type="text" name="email"/>
+		<br/>
+		<input type="submit" value="註冊"/>
+	</form>
+</body>
+</html>

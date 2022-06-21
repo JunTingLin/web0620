@@ -16,8 +16,11 @@ public class EncodingFilter implements Filter{
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
 //		req.setCharacterEncoding("UTF-8");
+		System.out.println("有人來了...");
 		req.setCharacterEncoding(this.encoding);
 		resp.setCharacterEncoding(this.encoding);
+		chain.doFilter(req, resp);
+		System.out.println("有人要回去了");
 		
 	}
 
@@ -25,6 +28,7 @@ public class EncodingFilter implements Filter{
 	public void init(FilterConfig filterConfig) throws ServletException {
 		// TODO Auto-generated method stub
 		Filter.super.init(filterConfig);
+		System.out.println("編碼攔截器活過來了...");
 		this.encoding = filterConfig.getInitParameter("encoding");
 	}
 	
