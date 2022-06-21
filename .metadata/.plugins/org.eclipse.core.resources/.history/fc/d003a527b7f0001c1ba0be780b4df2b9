@@ -1,0 +1,5 @@
+package com.gjun.view;
+
+public class ShowPhotoServlet {
+
+}

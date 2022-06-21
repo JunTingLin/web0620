@@ -1,0 +1,5 @@
+package com.gjun.entity;
+
+public class AppConfig {
+
+}
