@@ -1,0 +1,21 @@
+package com.gjun.domain;
+
+import javax.sql.DataSource;
+
+import com.gjun.beans.Users;
+
+public class UserDao implements IDao<Users>{
+	private DataSource datasource;
+	
+	@Override
+	public boolean insert(Users entity) {
+		
+	}
+
+	@Override
+	public void setDataSource(DataSource datasource) {
+		this.datasource=datasource;
+		
+	}
+	
+}

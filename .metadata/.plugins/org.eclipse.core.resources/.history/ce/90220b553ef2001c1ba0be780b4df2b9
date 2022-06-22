@@ -1,0 +1,13 @@
+package com.gjun.domain;
+
+import com.gjun.beans.Users;
+
+public class UserDao implements IDao<Users>{
+
+	@Override
+	public boolean insert(Users entity) {
+		// TODO Auto-generated method stub
+		return IDao.super.insert(entity);
+	}
+	
+}
