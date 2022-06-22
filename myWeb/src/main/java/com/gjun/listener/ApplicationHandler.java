@@ -9,6 +9,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import com.gjun.domain.AppDBUtility;
 import com.gjun.entity.AppConfig;
 
 public class ApplicationHandler implements ServletContextListener{
@@ -17,6 +18,7 @@ public class ApplicationHandler implements ServletContextListener{
 	public void contextInitialized(ServletContextEvent sce) {
 		
 		ServletContext application = sce.getServletContext();
+		AppDBUtility.createDataSource(application, "dbconfig.properties");
 		String realPath = application.getRealPath("/WEB-INF/app.properties");
 		try {
 			InputStream is = new FileInputStream(realPath);
