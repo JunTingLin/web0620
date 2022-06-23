@@ -1,0 +1,36 @@
+package com.gjun.domain;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import com.gjun.beans.Customers;
+
+
+
+public class CustomersDao implements IDao<Customers>{
+	private DataSource datasource;
+
+	@Override
+	public void setDataSource(DataSource datasource) {
+		this.datasource=datasource;
+	}
+
+	@Override
+	public List<Customers> selectForList(Object key) throws SQLException {
+		Connection connection = datasource.getConnection();
+		String sql="SELECT * FROM customer_list where country=?";
+		PreparedStatement st=connection.prepareStatement(sql);
+		st.setObject(1, key);
+		ResultSet rs=st.executeQuery();
+//		System.out.println(rs.getString(2));
+		return null;
+	}
+	
+	
+
+}

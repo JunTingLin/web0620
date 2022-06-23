@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 
 import com.gjun.beans.Users;
 import com.gjun.domain.IDao;
-import com.gjun.domain.UserDao;
+import com.gjun.domain.UsersDao;
 
 /**
  * Servlet implementation class RegisterSaveServlet
@@ -48,7 +48,7 @@ public class RegisterSaveServlet extends HttpServlet {
 		
 		DataSource datasource = 
 				(DataSource) this.getServletContext().getAttribute("datasource");
-		IDao<Users> dao = new UserDao();
+		IDao<Users> dao = new UsersDao();
 		dao.setDataSource(datasource);
 		try {
 			dao.insert(users);

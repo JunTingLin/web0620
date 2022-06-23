@@ -1,0 +1,5 @@
+package com.gjun.domain;
+
+public class CustomersDao {
+
+}

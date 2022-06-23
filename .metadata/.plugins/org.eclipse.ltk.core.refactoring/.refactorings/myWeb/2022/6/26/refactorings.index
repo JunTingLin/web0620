@@ -7,4 +7,5 @@
 1655801007140	Delete element
 1655896295464	Copy package
 1655896305868	Delete element
-1655915812168	Delete element
+1655921090833	Move 'custqry.jsp' to 'webapp'
+1655922910595	Rename type 'UserDao'
