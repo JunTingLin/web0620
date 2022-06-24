@@ -13,9 +13,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.mysql.cj.Session;
 
 /**
  * Servlet Filter implementation class AuthorizeFilter
@@ -53,33 +50,15 @@ public class AuthorizeFilter extends HttpFilter implements Filter {
 		boolean isValid = false;
 		Cookie[] cookies = req.getCookies();
 		if(cookies==null) {
-			errMsg="前端無任何cookies!";
+			errMsg="前端無任何cookies!非法入侵!!!";
 		}else {
 			for(Cookie cookie:cookies) {
 				if(cookie.getName().equals("cred")) {
-
-					HttpSession session = req.getSession(false); //假如get不到，不須幫我建新的
-					HttpSession testSession =req.getSession(true);
-					testSession.setAttribute("deliberate", "為了讓後端有其他session，故意在多建造一個");
-					if(session==null) {
-						errMsg="session為空";
-					}else {
-						Object obj = session.getAttribute("cred");
-						if(obj!=null) {
-							if(cookie.getValue().equals(obj.toString())) {
-								isValid=true;
-								break;
-							}else {
-								errMsg="前後端值對不上，偽造身分憑證....";
-							}
-						}else {
-							errMsg="後端session getAttribute為空";
-						}
-					}
-					
+					isValid=true;
+					break;
 				}
 			}
-			
+			errMsg="cookie name不對!非法入侵!!!";
 		}
 		System.out.println("isValid="+isValid);
 		if(isValid) {

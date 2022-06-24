@@ -42,7 +42,7 @@ public class LoginValidServlet extends HttpServlet {
 		try {
 			boolean r = users.selectForObject(username, passWord);
 			if(r) {
-				System.out.println("驗證通過，資料庫有撈到該筆使用者");
+				System.out.println("驗證通過");
 				Cookie cookie = new Cookie("cred", username);
 				cookie.setPath("acct");
 				response.addCookie(cookie);
@@ -50,10 +50,10 @@ public class LoginValidServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("cred", username);
 				
-				message=String.format("%s 驗證通過，資料庫有撈到該筆使用者", username);
+				message=String.format("%s 驗證通過", username);
 			}else {
-				System.out.println("驗證失敗，資料庫沒有撈到該筆使用者");
-				message=String.format("%s 驗證失敗，資料庫沒有撈到該筆使用者", username);
+				System.out.println("驗證失敗，帳密不正確");
+				message=String.format("%s 驗證失敗，帳密不正確", username);
 			}
 			request.setAttribute("message", message);
 			RequestDispatcher disp = request.getRequestDispatcher("showlogin.jsp");
