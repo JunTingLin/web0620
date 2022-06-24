@@ -9,3 +9,7 @@
 1655896305868	Delete element
 1655921090833	Move 'custqry.jsp' to 'webapp'
 1655922910595	Rename type 'UserDao'
+1655992236843	Move 'customerssave.jsp' to 'webapp'
+1655996182909	Rename resource 'customersform.jsp'
+1655996202745	Rename resource 'customerssave.jsp'
+1655997090647	Rename field 'datasource'

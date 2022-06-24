@@ -1,0 +1,27 @@
+<%@page import="com.gjun.domain.MyCustomersDao"%>
+<%@page import="com.gjun.domain.IDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="javax.sql.DataSource, com.gjun.beans.MyCustomers"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>客戶資料儲存</title>
+</head>
+<body>
+	<jsp:useBean id="customers"  class="com.gjun.beans.MyCustomers" scope="session"></jsp:useBean>
+	<!-- 自動封存 -->
+	<jsp:setProperty property="*" name="customers"/>
+	
+	<%
+	DataSource datasource = (DataSource)application.getAttribute("datasource");
+	IDao<MyCustomers> dao = new MyCustomersDao();
+	dao.setDataSource(datasource);
+	dao.insert(customers);
+	%>
+	
+	
+	<jsp:getProperty property="customerId" name="customers"/>
+	<jsp:getProperty property="companyName" name="customers"/>
+</body>
+</html>
