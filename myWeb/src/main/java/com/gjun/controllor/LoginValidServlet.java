@@ -44,7 +44,7 @@ public class LoginValidServlet extends HttpServlet {
 			if(r) {
 				System.out.println("驗證通過");
 				Cookie cookie = new Cookie("cred", username);
-				cookie.setPath("/acct");
+				cookie.setPath("acct");
 				response.addCookie(cookie);
 				
 				HttpSession session = request.getSession();
