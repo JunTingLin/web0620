@@ -2,6 +2,7 @@ package com.gjun.domain;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
@@ -35,6 +36,29 @@ public class UsersDao implements IDao<Users>{
 		return r;
 		
 	}
+
+		
+
+
+	@Override
+	public boolean selectForObject(Object key1, Object key2) throws SQLException {
+		boolean r = false;
+		Connection connection = this.datasource.getConnection();
+		String sql = "SELECT count(*) AS counter FROM javausers WHERE username=? and password=?";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setObject(1, key1);
+		ps.setObject(2, key2);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		if(rs.getInt("counter")>0) {
+			r=true;
+		}
+		connection.close();
+		return r;
+	}
+
+
+
 
 	@Override
 	public void setDataSource(DataSource datasource) {
