@@ -16,3 +16,4 @@
 1656061559298	Move 'login.jsp' to 'webapp'
 1656099206732	Rename resource 'testjstlcore.jsp'
 1656155877834	Rename resource 'testjspcore.jsp'
+1656158119733	Rename package 'com.gjun.function'
