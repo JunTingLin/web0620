@@ -18,7 +18,30 @@
 		<body-content>empty</body-content>
 		<example>&lt;junting:hello/&gt;</example>
 		<!-- 可以用線上html encode把"<"換成"&lt;"，不然會撞 -->
+	</tag>
 
+
+	<!-- 具有屬性設定的自訂標籤 -->
+	<tag>
+		<description>打招呼標籤，注入資訊</description>
+		<name>whoHello</name>
+		<tag-class>com.gjun.tags.WhoHelloTagHandler</tag-class>
+		<body-content>empty</body-content>
+		<!-- 描述標籤中attribute -->
+		<attribute>
+			<description>注入姓名</description>
+			<name>who</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>打招呼資訊</description>
+			<name>information</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
 	</tag>
 
 </taglib>
