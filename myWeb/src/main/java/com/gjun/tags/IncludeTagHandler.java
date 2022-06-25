@@ -21,15 +21,16 @@ public class IncludeTagHandler extends BodyTagSupport {
 
 	@Override
 	public int doAfterBody() throws JspException {
-		JspWriter innerWriter = this.bodyContent.getEnclosingWriter();
-		String sourceBody = this.bodyContent.getString();
-		String msg=String.format("<font size='7'>我是Body內容...%s</font>",sourceBody);
-		try {
-			innerWriter.print(msg);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		JspWriter innerWriter = this.bodyContent.getEnclosingWriter();
+//		String sourceBody = this.bodyContent.getString();
+//		String msg=String.format("<font size='7'>我是Body內容...%s</font>",sourceBody);
+//		try {
+//			innerWriter.print(msg);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
 		return EVAL_PAGE;
 	}
 

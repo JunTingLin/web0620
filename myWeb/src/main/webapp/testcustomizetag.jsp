@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*"%>
 <%@ taglib prefix="junting" uri="http://www.junting.com.tw/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
@@ -9,6 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%
+		List<String> data=new ArrayList<>();
+		data.add("Allen");
+		data.add("Bill");
+		data.add("Cathy");
+		pageContext.setAttribute("data",data);
+	%>
 	<c:set var="myname" value="林俊霆"></c:set>
 	<junting:hello/>
 	<br>
@@ -20,5 +27,7 @@
 	<junting:bufferTag>buffer tag ${ myname }!!!</junting:bufferTag>
 	<br>
 	<junting:includeTag>include tag ${ myname }!!!</junting:includeTag>
+	<br>
+	<junting:listData data="${ data }">客戶名稱</junting:listData>
 </body>
 </html>

@@ -1,0 +1,30 @@
+package com.gjun.tags;
+
+import java.util.List;
+
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.BodyTagSupport;
+
+public class TableRenderTagHandler extends BodyTagSupport{
+	private List<String> data;
+
+	public List<String> getData() {
+		return data;
+	}
+
+	public void setData(List<String> data) {
+		this.data = data;
+	}
+
+	@Override
+	public int doEndTag() throws JspException {
+		this.bodyContent.getString();
+	}
+
+	@Override
+	public int doStartTag() throws JspException {
+		return EVAL_BODY_BUFFERED;
+	}
+	
+
+}

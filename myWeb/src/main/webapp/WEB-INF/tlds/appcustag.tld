@@ -99,4 +99,19 @@
 			<type>java.lang.String</type>
 		</attribute>
 	</tag>
+
+	<tag>
+		<description>BodyTag資料處理</description>
+		<name>listData</name>
+		<tag-class>com.gjun.tags.TableRenderTagHandler</tag-class>
+		<body-content>JSP</body-content>
+		<!-- 定義屬性 -->
+		<attribute>
+			<description>資料</description>
+			<name>data</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.util.List&lt;java.lang.String&gt;</type>
+		</attribute>
+	</tag>
 </taglib>
