@@ -44,4 +44,36 @@
 		</attribute>
 	</tag>
 
+	<!-- 具有屬性設定的自訂標籤 實體標籤 -->
+	<tag>
+		<description>打招呼標籤，注入資訊</description>
+		<name>whoLoopHello</name>
+		<tag-class>com.gjun.tags.WhoHelloIterationTagHandler</tag-class>
+		<body-content>JSP</body-content>
+		<!-- 描述標籤中attribute -->
+		<attribute>
+			<description>注入姓名</description>
+			<name>who</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>打招呼資訊</description>
+			<name>information</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<!-- 最大次數 -->
+		<attribute>
+			<description>設定次數</description>
+			<name>counter</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.Integer</type>
+			<!-- int->Interger 基本型態封箱型別wrapper -->
+		</attribute>
+	</tag>
+
 </taglib>
