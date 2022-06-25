@@ -76,4 +76,11 @@
 		</attribute>
 	</tag>
 
+	<!-- 實體標籤處理 -->
+	<tag>
+		<description>具有實體內容處理Buffer</description>
+		<name>bufferTag</name>
+		<tag-class>com.gjun.tags.MyBodyTagHandler</tag-class>
+		<body-content>JSP</body-content>
+	</tag>
 </taglib>
