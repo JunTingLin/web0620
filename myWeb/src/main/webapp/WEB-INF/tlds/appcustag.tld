@@ -83,4 +83,20 @@
 		<tag-class>com.gjun.tags.MyBodyTagHandler</tag-class>
 		<body-content>JSP</body-content>
 	</tag>
+
+	<!-- 採用include處理body -->
+	<tag>
+		<description>Body Tag含入處理</description>
+		<name>includeTag</name>
+		<tag-class>com.gjun.tags.IncludeTagHandler</tag-class>
+		<body-content>JSP</body-content>
+		<!-- 定義屬性 -->
+		<attribute>
+			<description>誰</description>
+			<name>who</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
 </taglib>

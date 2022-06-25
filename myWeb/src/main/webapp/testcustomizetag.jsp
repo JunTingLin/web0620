@@ -18,5 +18,7 @@
 	<br>
 	<!-- 中間可搭配EL抓進去處理 -->
 	<junting:bufferTag>buffer tag ${ myname }!!!</junting:bufferTag>
+	<br>
+	<junting:includeTag>include tag ${ myname }!!!</junting:includeTag>
 </body>
 </html>
