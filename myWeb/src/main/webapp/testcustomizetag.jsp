@@ -15,5 +15,8 @@
 	<junting:whoHello information="吃飽了沒?" who="${ myname }"/>
 	<br>
 	<junting:whoLoopHello counter="3" information="累了嗎?" who="${ myname }">testing</junting:whoLoopHello>
+	<br>
+	<!-- 中間可搭配EL抓進去處理 -->
+	<junting:bufferTag>buffer tag ${ myname }!!!</junting:bufferTag>
 </body>
 </html>
