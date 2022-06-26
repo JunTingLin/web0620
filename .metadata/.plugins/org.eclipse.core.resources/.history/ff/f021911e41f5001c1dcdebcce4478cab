@@ -1,0 +1,10 @@
+package com.gjun.service;
+
+import javax.ws.rs.Path;
+
+@Path("/Customers")
+public class CustomersService {
+	public String customersQry(String country) {
+		
+	}
+}
