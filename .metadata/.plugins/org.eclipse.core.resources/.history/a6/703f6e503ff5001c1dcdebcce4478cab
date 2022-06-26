@@ -1,0 +1,15 @@
+package com.gjun.service;
+
+public class HelloService {
+	//建構子
+		public HelloService() {
+			System.out.println("Hello Resource...");
+		}
+		@Path("/say/hello")
+		@GET //前端請求方法 
+		@Produces("text/plain") //決定Response Header Content-Type
+		public String sayHello() {
+			return "<font size='7' color='red'>您好</font>";
+		}
+
+}
