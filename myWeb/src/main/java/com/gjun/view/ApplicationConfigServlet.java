@@ -40,7 +40,7 @@ public class ApplicationConfigServlet extends HttpServlet{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.print("應用系統聆聽器 活過來了...");
+		System.out.print("應用系統聆聽器 活過來了...(非真實datasource)");
 		System.out.println("獲取資源檔參數: "+
 				((AppConfig)application.getAttribute("appConfig")).getAddress());
 		
