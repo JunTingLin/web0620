@@ -1,0 +1,151 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>客戶資料查詢</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script type="text/javascript">
+	//網頁下載時進行初始化
+	function init(){
+		//參考出標籤物件 設定為區域變數
+		let btnGo=document.getElementById('btnGo');
+		//alert(btnGo);
+		btnGo.addEventListener('click',
+				()=>{
+					//alert("我是按鈕")
+					let txtKey=document.getElementById('country').value;
+					console.log(txtKey);
+					let urlString="http://127.0.0.1:8080/myWeb/api/Customers/custqry/rawdata?country="+txtKey;
+					let xhr = new XMLHttpRequest();
+					xhr.onreadystatechange=function(){
+						console.log('非同步處理過程:'+xhr.readyState);
+						console.log('Http處理狀態碼:'+xhr.status);
+						if(xhr.readyState==4 && xhr.status==200){
+							//查詢完成有資料
+							let result=xhr.responseText;
+							console.log(typeof(result));
+							//回應是一個字串 轉換成可以操作的Json物件(array or Object)
+							//使用現成JSON class
+							let jsonObject=JSON.parse(result);
+							console.log(jsonObject);
+						}else if(xhr.readyState==4 && xhr.status==400){
+							console.log(xhr.responseText);
+						}
+					}
+					console.log(xhr);
+					xhr.open('GET',urlString,true);
+					xhr.send();
+				}
+		)
+	}
+</script>
+
+</head>
+<body onload="init()">
+	<fieldset>
+		<legend>客戶查詢</legend>
+		<div>國家別</div>
+		<input type="text" id="country" />
+		<button id="btnGo">查詢</button>
+		<br>
+		<fieldset>
+			<legend>查詢結果</legend>
+		</fieldset>
+	</fieldset>
+	
+	<!-- 建構一個個體Vue物件 -->
+	<script type="text/javascript">
+	//建構Vue物件
+	var app=new Vue(
+			//settings 多參數 不確定數量 採用JavaScript物件
+			{
+				//綁定的區塊DOM
+				el:'#panel',
+				//資料模組屬性
+				data:{
+					countryKey:'TW',
+					//查詢結果
+					resultData:[], //是一個陣列
+					//查詢結果訊息
+					messageData:{}, //JavaScript物件
+					isShow:false,
+					isEdit:false
+				},
+				methods:{
+					//事件程序或者函數
+					editForm:function(cid){
+							app.isEdit=true;
+							$('#editForm').dialog();
+							
+					}
+				}
+			}
+			);
+	//網頁下載時進行初始化(Load Initializer)
+	//函數當作一個事件程序(Event Procedure)
+	function init(){
+		//參考出標籤物件(DOM-Document Object Model) 設定為區域變數
+		//let區域變數定物
+		let btnGo=document.getElementById('btnGo');
+		//alert(btnGo);
+		//針對那一個按鈕物件執行階段 委派click事件程序
+		// 也可使用tag裡的onclick屬性<element onclick="myScript">
+		btnGo.addEventListener('click',
+				//Lambda expresion，也可用一般funciton(){}
+				// 跟java lambda有差，java為()->{}，為單鍵號
+				()=>{
+					//alert('我是按鈕');
+					//1.使用DOM去參考文字輸入方塊輸入內容(國家別)
+					//<input type='text' value='xxxx'/>
+					let txtKey=document.getElementById('country').value;
+					//輸出到瀏覽器主控台Console
+					console.log(txtKey);
+					//2.採用AJAX引擎支援的XMLHttpRequest /XMLHttpResponse物件進行非同步處理
+					//服務位址
+					let urlString='http://localhost:8080/myweb/api/customers/custqry/rawdata?count='+txtKey;
+					//建構一個XMLHttpRequest物件
+					let xhr=new XMLHttpRequest();
+					//埋入非同步進行callbck事件程序
+					xhr.onreadystatechange=function(){
+						//問一下處理非同步過程(輪播狀態回來)
+						console.log('非同步處理過程:'+xhr.readyState);
+						console.log('Http處理狀態碼:'+xhr.status);
+						//判斷處理成功
+						if(xhr.readyState==4 && xhr.status==200){
+							//查詢完成有資料
+							let result=xhr.responseText;
+							console.log(typeof(result));
+							//回應是一個字串 轉換成可以操作的Json物件(array or Object)
+							//使用現成JSON class
+							let jsonObject=JSON.parse(result);
+							console.log(jsonObject);
+							//將結果指派Vue Data Model
+							app.resultData=jsonObject;
+							app.messageData={}; //reset {}
+							//Vue Data Model isShow定義為true
+							app.isShow=true;
+						}else if(xhr.readyState==4 && xhr.status==400){
+							console.log(xhr.responseText);
+							app.messageData=JSON.parse(xhr.responseText)
+							//Vue Data Model isShow定義為true
+							app.isShow=false;
+						}
+					}
+					console.log(xhr);
+					//Request Client 請求要件:URL/採用哪一種傳送方法GET/傳遞資訊/回應內容JSON文件格式
+					xhr.open('GET',urlString,true); //預設為true 可以不下
+					
+					//等待一下 不是立即執行
+					//正式提出非同步請求
+					xhr.send(); //..還在併行處理
+					//繼續了
+					
+					
+				}
+		);
+	}
+</script>
+</body>
+</html>
