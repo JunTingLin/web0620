@@ -45,8 +45,8 @@ function init(){
 			}
 	)
 }
-</script>
 
+</script>
 </head>
 <body onload="init()">
 	<fieldset id="panel">
