@@ -19,7 +19,7 @@ import com.gjun.domain.IDao;
 import com.gjun.domain.Message;
 import com.gjun.domain.MyCustomersDao;
 
-@Path("/Customers")
+@Path("/customers")
 public class CustomersService {
 	@Inject
 	IDao<MyCustomers> dao;
@@ -47,7 +47,7 @@ public class CustomersService {
 		if(result.size()==0) {
 			Message msg = new Message();
 			msg.setCode(400);
-			msg.setMessage("json為空，沒有任何客戶紀錄");
+			msg.setMessage("國家別:"+country+" 沒有任何客戶記錄");
 			response=Response.status(400).entity(msg).build();
 		}
 		return response;
