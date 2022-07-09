@@ -1,8 +1,0 @@
-package com.gjun.view;
-
-import javax.servlet.annotation.WebServlet;
-
-@WebServlet("/RegisterSave")
-public class RegisterServlet extends HelloServlet{
-
-}

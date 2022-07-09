@@ -1,7 +1,0 @@
-package com.gjun.tags;
-
-import javax.servlet.jsp.tagext.BodyTagSupport;
-
-public class IncludeTagHandler extends BodyTagSupport {
-	
-}

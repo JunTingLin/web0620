@@ -8,7 +8,7 @@ import javax.ws.rs.Produces;
 //POJO(Plain Old Java Object)
 @Path("/hello")
 public class HelloService {
-	// 建構子
+	// 建構子 //不能傳入參數，@GET、@POST也指是用在method上，建構式不適用
 	public HelloService() {
 		System.out.println("Hello Resource...");
 	}

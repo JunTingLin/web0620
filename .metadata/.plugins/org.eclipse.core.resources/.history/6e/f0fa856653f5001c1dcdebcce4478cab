@@ -1,8 +1,0 @@
-package com.gjun.domain;
-
-public class Message {
-	private int code;
-	private String message;
-	
-	
-}
